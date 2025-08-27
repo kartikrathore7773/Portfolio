@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kartik Rathore | Full Stack Developer</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
+    html {scroll-behavior: smooth;}
+    body {
+      background: linear-gradient(135deg,#0f172a,#1e293b);
+      color:#fff;
+      transition:background 0.3s, color 0.3s;
+    }
+    body.light-mode {
+      background: #f9fafb;
+      color:#111;
+    }
+
+    /* Navbar */
+    nav {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 8%;
+      background:#0f172a;
+      position:sticky;
+      top:0;
+      z-index:100;
+      box-shadow:0 4px 15px rgba(0,0,0,0.2);
+    }
+    nav .nav-name {font-size:1.4rem; font-weight:700; color:#38bdf8;}
+    nav ul {list-style:none; display:flex; gap:25px; align-items:center;}
+    nav ul li a {
+      color:#fff; text-decoration:none; font-weight:500; transition:0.3s;
+    }
+    nav ul li a:hover {color:#06b6d4;}
+    .resume-btn {
+      padding:10px 18px;
+      background:#06b6d4;
+      color:#fff;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+      box-shadow:0 4px 15px rgba(6,182,212,0.5);
+    }
+    .resume-btn:hover {background:#0891b2; transform:scale(1.05); box-shadow:0 6px 20px rgba(6,182,212,0.7);}
+    #theme-toggle {cursor:pointer; font-size:22px; margin-left:10px;}
+
+    /* Hero Section */
+    .firstSection {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:120px 8%;
+      flex-wrap:wrap;
+    }
+    .leftSection {
+      flex:1;
+      font-size:2.6rem;
+      font-weight:600;
+      line-height:1.4;
+    }
+    .leftSection span {color:#06b6d4;}
+    .leftSection .emoji {font-size:2rem; margin-left:6px;}
+    .rightSection {flex:1; display:flex; justify-content:center;}
+    .rightSection img {
+      width:300px; border-radius:50%;
+      box-shadow:0 0 45px rgba(6,182,212,0.6);
+      transition:transform 0.3s, box-shadow 0.3s;
+    }
+    .rightSection img:hover {transform:scale(1.08); box-shadow:0 0 60px rgba(6,182,212,0.9);}
+
+    /* About Section */
+    #about {
+      padding:80px 8%;
+      background:#1e293b;
+      color:#fff;
+    }
+    #about h2 {text-align:center; font-size:2.2rem; margin-bottom:40px; color:#06b6d4;}
+    #about div {max-width:900px; margin:0 auto; font-size:1.05rem; line-height:1.9;}
+    #about ul {list-style:none; padding-left:0; margin-top:20px;}
+    #about ul li {
+      margin-bottom:15px; font-weight:500;
+    }
+    #about ul li::before {
+      content:"💡 "; margin-right:6px; color:#38bdf8;
+    }
+
+    /* Experience Section */
+    #experience {
+      padding:80px 8%;
+      text-align:center;
+      background:#0f172a;
+    }
+    #experience h2 {font-size:2.2rem; margin-bottom:50px; color:#06b6d4;}
+    .experience-cards {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:25px;
+      justify-items:center;
+    }
+    .exp-card {
+      background:#1e293b;
+      padding:25px;
+      border-radius:15px;
+      transition:0.3s;
+      border-left:4px solid #06b6d4;
+    }
+    body.light-mode .exp-card {background:#fff; color:#111; border:1px solid #ddd;}
+    .exp-card:hover {transform:translateY(-6px); box-shadow:0 10px 25px rgba(0,0,0,0.35);}
+    .exp-card h3 {margin-bottom:10px; color:#38bdf8;}
+    .exp-card p {margin-bottom:8px;}
+    .exp-card .company {font-weight:600; color:#06b6d4;}
+
+    /* Projects Section */
+    #projects {
+      padding:80px 8%;
+      text-align:center;
+      background:#1e293b;
+      color:#fff;
+    }
+    #projects h2 {color:#06b6d4; margin-bottom:50px;}
+    #projects .experience-cards {margin-bottom:80px;}
+    .margin-bottom-80 {margin-bottom:80px;}
+    .project-card {background:#0f172a; padding:20px; border-radius:15px; transition:0.3s; border-left:4px solid #38bdf8;}
+    .project-card:hover {transform:translateY(-6px); box-shadow:0 10px 25px rgba(0,0,0,0.35);}
+    .project-card h3 {color:#38bdf8; margin-bottom:10px;}
+    .project-card p {margin-bottom:8px;}
+
+    /* Contact Section */
+    #contact {
+      padding:80px 8%;
+      text-align:center;
+      background:#1e293b;
+      color:#fff;
+    }
+    #contact h2 {font-size:2.2rem; margin-bottom:50px; color:#06b6d4;}
+    .contact-cards {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+      gap:25px;
+      justify-items:center;
+    }
+    .card {
+      background:#0f172a;
+      padding:18px;
+      border-radius:15px;
+      transition:0.3s;
+      cursor:pointer;
+    }
+    body.light-mode .card {background:#fff; border:1px solid #ddd;}
+    .card:hover {transform:translateY(-6px); box-shadow:0 10px 25px rgba(0,0,0,0.35);}
+    .card img {width:55px; height:55px; transition:0.3s;}
+    .card img:hover {transform:scale(1.2);}
+
+    footer {text-align:center; padding:25px; background:#0f172a; margin-top:50px; color:#06b6d4; font-weight:500;}
+
+    /* Light Mode Fix */
+    body.light-mode #about {background:#fff; color:#111;}
+    body.light-mode #experience {background:#f3f4f6; color:#111;}
+    body.light-mode #projects {background:#f9fafb; color:#111;}
+    body.light-mode #contact {background:#fff; color:#111;}
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <span class="nav-name">Kartik Singh Rathore</span>
+    <ul>
+      <li><a href="#">🏠 Home</a></li>
+      <li><a href="#about">👨‍💻 About</a></li>
+      <li><a href="#experience">💼 Experience</a></li>
+      <li><a href="#projects">🛠 Projects</a></li>
+      <li><a href="#contact">📞 Contact</a></li>
+      <li><a href="Kartiksinghrathore_Resume.pdf" download class="resume-btn">📄 Resume</a></li>
+      <li><span id="theme-toggle">🌙</span></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="firstSection">
+    <div class="leftSection">
+      Hi, I'm <span>Kartik Singh Rathore</span> <span class="emoji">👋</span><br>
+      and I am a passionate <span id="element"></span> <span class="emoji">💻</span>
+    </div>
+    <div class="rightSection">
+      <img src="kartikimage.jpg" alt="Kartik Singh Rathore">
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div>
+      <p>Hi, I'm <strong>Kartik Singh Rathore</strong>, a final-year B.Tech CSE student at Vivekananda Institute of Technology, Jaipur. I have a strong interest in Full Stack Web Development, Machine Learning, and Deep Learning. I have hands-on experience building projects like an <strong>Applicant Tracking System (ATS)</strong> and a <strong>chatbot</strong> 🤖.</p>
+
+      <p>Alongside academics, I have professional experience:</p>
+      <ul>
+        <li><strong>Academic Counselor</strong> at <strong>College Dekho, Gurgaon</strong> (Feb 2025 - May 2025) – Guided students and managed academic queries 🎓.</li>
+        <li><strong>Business Development Associate</strong> at <strong>Internselite</strong> (Dec 2024 - Feb 2025) – Handled leads, client interaction, and analytics 📊.</li>
+        <li><strong>ML & DL Intern</strong> at <strong>Regex Software Services</strong> (Jul 2024 - Aug 2024) – Built ML/DL models including a chatbot 🤖.</li>
+      </ul>
+
+      <p>My technical skills include <strong>HTML, CSS, JavaScript, MERN Stack, Python, Machine Learning, Deep Learning</strong> ⚡. Passionate about building innovative solutions and continuously learning new technologies 🚀.</p>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="experience-cards">
+      <div class="exp-card">
+        <h3>Academic Counselor</h3>
+        <p class="company">College Dekho, Gurgaon</p>
+        <p>Guided students, managed schedules and academic queries 🎓.</p>
+        <p><strong>Duration:</strong> Feb 2025 - May 2025</p>
+      </div>
+      <div class="exp-card">
+        <h3>Business Development Associate</h3>
+        <p class="company">Internselite</p>
+        <p>Handled lead generation, client interaction, and analytics 📊.</p>
+        <p><strong>Duration:</strong> Dec 2024 - Feb 2025</p>
+      </div>
+      <div class="exp-card">
+        <h3>ML & DL Intern</h3>
+        <p class="company">Regex Software Services</p>
+        <p>Worked on ML/DL projects including a chatbot 🤖.</p>
+        <p><strong>Duration:</strong> Jul 2024 - Aug 2024</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="experience-cards margin-bottom-80">
+    <div class="experience-cards margin-bottom-80">
+      <div class="project-card">
+        <h3>Applicant Tracking System (ATS)</h3>
+        <p>Full-stack app to manage job applications, track candidates, and automate interviews 📝.</p>
+        <p><strong>Tech Stack:</strong> HTML, CSS, JS, Node.js, Express, MongoDB</p>
+      </div>
+      <div class="project-card">
+        <h3>Chatbot Project</h3>
+        <p>AI-powered chatbot for FAQs and user interaction 🤖.</p>
+        <p><strong>Tech Stack:</strong> Python, Flask, NLP, JS, HTML/CSS</p>
+      </div>
+      <div class="project-card">
+        <h3>Real World AI Application</h3>
+        <p>Implemented ML pipelines and deployed AI apps using Google Cloud Vertex AI ☁️.</p>
+        <p><strong>Tech Stack:</strong> Python, ML, Vertex AI, Cloud Deployment</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-cards">
+      <div class="card">
+        <a href="https://www.linkedin.com/in/kartikrathore7773/" target="_blank" rel="noopener">
+          <img src="linkedin.png" alt="LinkedIn">
+        </a>
+      </div>
+      <div class="card">
+        <a href="https://github.com/kartikrathore7773" target="_blank" rel="noopener">
+          <img src="github.png" alt="GitHub">
+        </a>
+      </div>
+      <div class="card">
+        <a href="mailto:kartikrathore770@gmail.com">
+          <img src="mail.png" alt="Email">
+        </a>
+      </div>
+      <div class="card">
+        <a href="tel:+919001060923">
+          <img src="contact.png" alt="Phone">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2025 Kartik Singh Rathore | Made with 💖 & 🚀</footer>
+
+  <!-- Typed.js -->
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script>
+    var typed = new Typed("#element", {
+      strings:["Full Stack Developer","MERN Stack Developer","Machine Learning Enthusiast"],
+      typeSpeed:50,
+      backSpeed:40,
+      loop:true,
+    });
+
+    // Theme Toggle
+    const toggleBtn = document.getElementById("theme-toggle");
+    toggleBtn.addEventListener("click",()=>{
+      document.body.classList.toggle("light-mode");
+      toggleBtn.textContent=document.body.classList.contains("light-mode")?"🌞":"🌙";
+    });
+  </script>
+</body>
+</html>
